@@ -1,0 +1,12 @@
+
+{
+  "name": "saucedemo-playwright-clean",
+  "version": "1.0.0",
+  "description": "Clean Playwright project ready for VS Code import",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.43.0"
+  }
+}
