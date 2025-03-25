@@ -17,8 +17,7 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r python-tests/requirements.txt
       - name: Run Python test
-        run: PYTHONPATH=python-tests python3 python-tests/test_saucedemo.py
-
+        run: PYTHONPATH=. python3 python-tests/test_saucedemo.py
 
   playwright:
     runs-on: ubuntu-latest
