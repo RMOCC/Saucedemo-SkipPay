@@ -1,5 +1,5 @@
 
-from pages.drivers import Drivers
+from python-tests.pages.drivers import Drivers
 from pages.saucedemo_page import SaucedemoPage
 import logging
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, ElementClickInterceptedException
