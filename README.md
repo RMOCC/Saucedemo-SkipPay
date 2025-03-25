@@ -5,9 +5,18 @@
 
 
 3. Analýza chyb a jejich dopadu
+                              Title: API endpoint /checkout vrací 500 Internal Server Error při finalizaci objednávky
+                                 Type: Bug
+                                 Priority: High
+                                 Reported by: Automation Tester
+                                 Environment: https://www.saucedemo.com/api/checkout
+                                 Description: Během automatizovaného E2E testu byla detekována chyba na API endpointu /checkout. Server vrací chybový kód 500 Internal Server Error při pokusu o dokončení objednávky. Testovací scénář "Complete Purchase Flow" selhal v kroku "Submit checkout".
+                                 Steps to Reproduce (simulace): Přihlášení jako standard_user, Přidání zboží do košíku, Přechod na checkout, Odeslání POST requestu na /api/checkout, Server vrátí: HTTP/1.1 500 Internal Server Error
+                                 Test Failure Message (Log): Expected status 200 but received 500, POST /api/checkout, Response: Internal Server Error
+                                 Příloha: Logy z testu, Screenshot chyby (případně přiložit .har z manualni verze testu)
 
 
-4. Kritické cesty a jejich pokrytí ✅
+5. Kritické cesty a jejich pokrytí ✅
 
       Přihlášení do aplikace - Uživatel se bez úspěšného přihlášení nedostane k funkcím aplikace.
                                Chyby při přihlášení mohou způsobit frustraci nebo znemožnit nákup.
@@ -29,9 +38,70 @@
                                Simulovat různé scénáře (např. rychlé přepínání mezi účty).
 
 
-7. Mentoring úkol
+7. Mentoring úkol  ✅          
 
-8. Dokumentace k spusteni testu Python & Playwright  ✅
+                              1. Základní knihovny
+                              Používej tyto knihovny: from selenium import webdriver
+                                                      from selenium.webdriver.common.by import By
+                                                      from selenium.webdriver.support.ui import WebDriverWait
+                                                      from selenium.webdriver.support import expected_conditions as EC
+                                                      from webdriver_manager.chrome import ChromeDriverManager
+
+                                                      webdriver_manager` ti **automaticky stáhne správný ChromeDriver
+
+                              2. Správné vyhledávání prvků (příklad z našeho PageObject)
+                                                      Vždy používej By.ID, By.CLASS_NAME, By.CSS_SELECTOR:
+
+                                                      self.driver.find_element(By.ID, "user-name").send_keys("standard_user")
+
+                                                      Nepoužívej složité XPATH, když máš ID nebo data-test!
+
+
+                              3. Používej `WebDriverWait` — zamezí chybám načtení
+                                                      Správně čekáme na prvek v našem testu:
+                                                      self.wait.until(EC.element_to_be_clickable(self.saucedemo_page.login_button.locator)).click()
+                                                      Čekáme na **kliknutelnost** — nepadne ti to na "element not found"
+
+                              4. `driver.quit()` na konci testu 
+                                                      V našem testu máme clean-up:
+                                                      def teardown(self):
+                                                      logging.info("Tearing down browser")
+                                                      self.browser.quit()
+
+                                                      Tím se zavře prohlížeč— nezůstane ti viset proces
+
+                              5. Používej Page Object Model (POM) 
+                                                      Příklad naší `SaucedemoPage`:
+                                                      class SaucedemoPage:
+                                                          def __init__(self, driver):
+                                                          self.driver = driver
+
+                                                      @property
+                                                          def login_button(self):
+                                                                return self.driver.find_element(By.ID, "login-button")
+
+                                                      Test je přehledný — test volá:
+                                                      self.saucedemo_page.login_button.click()
+
+
+                              6. Automatické stahování driveru            
+                                                      V našem `drivers.py`:
+                                                      self.driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+
+                                                       Nehraješ si ručně s chromedriverem** — řeší `webdriver_manager`
+
+                              7.Nejčastější chyby juniorů (naše skripty se jim vyhýbají!)**
+                                                      Chybí `driver.quit()`  
+                                                      Chybí `WebDriverWait` → "element not found"  
+                                                      Používají absolutní XPATH  
+                                                      Vše v jednom scripťáku bez struktury
+
+  
+                              "Začni jednoduše, přidej složitost až postupně."  
+                              "Vždy přemýšlej, jestli test simuluje reálného uživatele."
+
+
+9. Dokumentace k spusteni testu Python & Playwright  ✅
 
                               Jak spustit testovací scénář:
 
@@ -44,7 +114,7 @@
                                Výsledek uvidíš v Actions logu
 
 
-9. CI/CD konfigurace      ✅
+10. CI/CD konfigurace      ✅
                                
    
 
