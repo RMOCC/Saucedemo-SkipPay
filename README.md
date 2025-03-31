@@ -90,7 +90,7 @@
 
                                                        Nehraješ si ručně s chromedriverem** — řeší `webdriver_manager`
 
-                              7.Nejčastější chyby juniorů (naše skripty se jim vyhýbají!)**
+                              7.Nejčastější chyby
                                                       Chybí `driver.quit()`  
                                                       Chybí `WebDriverWait` → "element not found"  
                                                       Používají absolutní XPATH  
