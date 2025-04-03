@@ -53,8 +53,8 @@ class SaucedemoTest:
             self.safe_click(self.saucedemo_page.burger_menu_button)
             self.wait_for_element_text(self.saucedemo_page.logout_sidebar_link, 'Logout')
 
-            self.wait_for_element_text(self.saucedemo_page.page_title, 'Products')
-            item_name = self.saucedemo_page.item_5_title_link_inventory.text()
+                self.wait_for_element_text(self.saucedemo_page.page_title, 'Products')
+                item_name = self.saucedemo_page.item_5_title_link_inventory.text()
 
             self.safe_click(self.saucedemo_page.item_5_title_link_inventory)
             self.wait_for_element_text(self.saucedemo_page.back_to_products_button, 'Back to products')

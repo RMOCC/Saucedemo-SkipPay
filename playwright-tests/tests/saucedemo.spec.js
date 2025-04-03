@@ -1,5 +1,11 @@
 import { test, expect } from '@playwright/test';
 
+/*async function fillCheckoutForm(page) {
+  await page.getByPlaceholder('First Name').fill('Jan');
+  await page.getByPlaceholder('Last Name').fill('Novak');
+  await page.getByPlaceholder('Zip/Postal Code').fill('10400');
+*/
+
 test('Saucedemo E2E flow generated via codegen', async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
   await page.getByPlaceholder('Username').click();
