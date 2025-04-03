@@ -1,10 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-/*async function fillCheckoutForm(page) {
-  await page.getByPlaceholder('First Name').fill('Jan');
-  await page.getByPlaceholder('Last Name').fill('Novak');
-  await page.getByPlaceholder('Zip/Postal Code').fill('10400');
-*/
+
 
 test('Saucedemo E2E flow generated via codegen', async ({ page }) => {
   await page.goto('https://www.saucedemo.com/');
@@ -13,6 +9,9 @@ test('Saucedemo E2E flow generated via codegen', async ({ page }) => {
   await page.getByPlaceholder('Password').click();
   await page.getByPlaceholder('Password').fill('secret_sauce');
   await page.getByRole('button', { name: 'Login' }).click();
+
+  // Znovu zkusit zavřít případný pop-up po přihlášení
+  await handleRandomPopup(page);
 
   await page.getByText('Products').isVisible();
 
@@ -45,3 +44,23 @@ test('Saucedemo E2E flow generated via codegen', async ({ page }) => {
   await page.getByRole('link', { name: 'Logout' }).click();
   await expect(page.getByRole('button', { name: 'Login' })).toBeVisible();
 });
+
+
+
+/*async function fillCheckoutForm(page) {
+  await page.getByPlaceholder('First Name').fill('Jan');
+  await page.getByPlaceholder('Last Name').fill('Novak');
+  await page.getByPlaceholder('Zip/Postal Code').fill('10400');
+
+  async function handleRandomPopup(page) {
+  const popup = page.locator('.popup'); // ← uprav podle skutečného popup selektoru
+  const closeButton = page.locator('.popup .close-button'); // ← uprav podle tlačítka pro zavření
+
+  if (await popup.isVisible()) {
+    console.log('Popup detected – attempting to close.');
+    await closeButton.click();
+  } else {
+    console.log('No popup appeared.');
+  }
+}
+*/

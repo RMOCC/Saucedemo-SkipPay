@@ -1,0 +1,9 @@
+# Ignoruj node_modules
+node_modules/
+
+# Ignoruj build složky
+dist/
+build/
+
+# Ignoruj soubor s environmentálními proměnnými
+.env
