@@ -1,17 +1,31 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 
+async function loginToSaucedemo(page) {
+  const username = process.env.SAUCE_USERNAME;
+  const password = process.env.SAUCE_PASSWORD;
 
-test('Saucedemo E2E flow generated via codegen', async ({ page }) => {
+  if (!username || !password) {
+    throw new Error('Chybí SAUCE_USERNAME nebo SAUCE_PASSWORD v .env souboru');
+  }
+
   await page.goto('https://www.saucedemo.com/');
-  await page.getByPlaceholder('Username').click();
-  await page.getByPlaceholder('Username').fill('standard_user');
-  await page.getByPlaceholder('Password').click();
-  await page.getByPlaceholder('Password').fill('secret_sauce');
+  await page.getByPlaceholder('Username').fill(username);
+  await page.getByPlaceholder('Password').fill(password);
   await page.getByRole('button', { name: 'Login' }).click();
 
-  // Znovu zkusit zavřít případný pop-up po přihlášení
+ // await handleRandomPopup(page);
+
+
+  /* Zkusit zavřít případný pop-up po přihlášení
   await handleRandomPopup(page);
+  */
+}
+
+test('Saucedemo E2E flow', async ({ page }) => {
+  await loginToSaucedemo(page);
 
   await page.getByText('Products').isVisible();
 
@@ -45,22 +59,8 @@ test('Saucedemo E2E flow generated via codegen', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Login' })).toBeVisible();
 });
 
-
-
-/*async function fillCheckoutForm(page) {
-  await page.getByPlaceholder('First Name').fill('Jan');
-  await page.getByPlaceholder('Last Name').fill('Novak');
-  await page.getByPlaceholder('Zip/Postal Code').fill('10400');
-
-  async function handleRandomPopup(page) {
-  const popup = page.locator('.popup'); // ← uprav podle skutečného popup selektoru
-  const closeButton = page.locator('.popup .close-button'); // ← uprav podle tlačítka pro zavření
-
-  if (await popup.isVisible()) {
-    console.log('Popup detected – attempting to close.');
-    await closeButton.click();
-  } else {
-    console.log('No popup appeared.');
-  }
+// Simulace funkce na zavření pop-upu – tu si přizpůsob podle potřeby
+  async function handleRandomPopup(page: Page) {
+  // Pokud existuje nějaký pop-up, tady ho můžeš zkusit zavřít
+  // await page.locator('selector-na-popup-close-button').click({ timeout: 1000 }).catch(() => {});
 }
-*/
