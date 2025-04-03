@@ -1,4 +1,4 @@
-name: Python and Playwright Tests
+name: Playwright Tests
 
 on:
   push:
@@ -6,16 +6,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  
   playwright:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-      -       - name: Install Playwright dependencies
+
+      - name: Install dependencies
         run: cd playwright-tests && npm install
 
       - name: Install only Chromium browser
@@ -26,4 +27,3 @@ jobs:
         env:
           SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
           SAUCE_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}
-
