@@ -1,5 +1,4 @@
-1. Automatizace uživatelské cesty Python/Selenium ✅
-
+1. Playwright automatizace  ✅
 
 2. Implementace do CI/CD pipeline ✅
 
@@ -118,7 +117,6 @@
                                
    
 
-11. Playwright automatizace  ✅
+
 
    
-# skippay
