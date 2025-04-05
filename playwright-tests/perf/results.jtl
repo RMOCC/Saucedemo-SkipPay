@@ -1,0 +1,11 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1743887790281,613,GET / (homepage),200,OK,1 uživatel x 10 opakování 1-1,text,true,,3302,119,1,1,https://www.saucedemo.com/,607,0,479
+1743887790901,19,GET / (homepage),200,OK,1 uživatel x 10 opakování 1-1,text,true,,3300,119,1,1,https://www.saucedemo.com/,19,0,0
+1743887790921,22,GET / (homepage),200,OK,1 uživatel x 10 opakování 1-1,text,true,,3300,119,1,1,https://www.saucedemo.com/,20,0,0
+1743887790943,18,GET / (homepage),200,OK,1 uživatel x 10 opakování 1-1,text,true,,3300,119,1,1,https://www.saucedemo.com/,17,0,0
+1743887790962,21,GET / (homepage),200,OK,1 uživatel x 10 opakování 1-1,text,true,,3300,119,1,1,https://www.saucedemo.com/,21,0,0
+1743887790985,18,GET / (homepage),200,OK,1 uživatel x 10 opakování 1-1,text,true,,3300,119,1,1,https://www.saucedemo.com/,17,0,0
+1743887791004,17,GET / (homepage),200,OK,1 uživatel x 10 opakování 1-1,text,true,,3300,119,1,1,https://www.saucedemo.com/,17,0,0
+1743887791023,16,GET / (homepage),200,OK,1 uživatel x 10 opakování 1-1,text,true,,3300,119,1,1,https://www.saucedemo.com/,16,0,0
+1743887791040,19,GET / (homepage),200,OK,1 uživatel x 10 opakování 1-1,text,true,,3300,119,1,1,https://www.saucedemo.com/,19,0,0
+1743887791059,16,GET / (homepage),200,OK,1 uživatel x 10 opakování 1-1,text,true,,3300,119,1,1,https://www.saucedemo.com/,16,0,0

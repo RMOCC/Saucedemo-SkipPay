@@ -1,0 +1,28 @@
+2025-04-05 23:10:55,611 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2025-04-05 23:10:55,635 INFO o.a.j.JMeter: Loading user properties from: /usr/local/Cellar/jmeter/5.6.3/libexec/bin/user.properties
+2025-04-05 23:10:55,636 INFO o.a.j.JMeter: Loading system properties from: /usr/local/Cellar/jmeter/5.6.3/libexec/bin/system.properties
+2025-04-05 23:10:55,642 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2025-04-05 23:10:55,642 INFO o.a.j.JMeter: Version 5.6.3
+2025-04-05 23:10:55,642 INFO o.a.j.JMeter: java.version=21.0.6
+2025-04-05 23:10:55,642 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2025-04-05 23:10:55,642 INFO o.a.j.JMeter: os.name=Mac OS X
+2025-04-05 23:10:55,642 INFO o.a.j.JMeter: os.arch=x86_64
+2025-04-05 23:10:55,642 INFO o.a.j.JMeter: os.version=15.3.1
+2025-04-05 23:10:55,642 INFO o.a.j.JMeter: file.encoding=UTF-8
+2025-04-05 23:10:55,642 INFO o.a.j.JMeter: java.awt.headless=true
+2025-04-05 23:10:55,643 INFO o.a.j.JMeter: Max memory     =1073741824
+2025-04-05 23:10:55,643 INFO o.a.j.JMeter: Available Processors =8
+2025-04-05 23:10:55,650 INFO o.a.j.JMeter: Default Locale=English (EN)
+2025-04-05 23:10:55,651 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2025-04-05 23:10:55,651 INFO o.a.j.JMeter: JMeterHome=/usr/local/Cellar/jmeter/5.6.3/libexec
+2025-04-05 23:10:55,651 INFO o.a.j.JMeter: user.dir  =/Users/romanek/Documents/repo/Saucedemo-playwright/playwright-tests
+2025-04-05 23:10:55,651 INFO o.a.j.JMeter: PWD       =/Users/romanek/Documents/repo/Saucedemo-playwright/playwright-tests
+2025-04-05 23:10:55,653 INFO o.a.j.JMeter: IP: 127.0.0.1 Name: RM-3.local FullName: localhost
+2025-04-05 23:10:55,666 ERROR o.a.j.JMeter: An error occurred: 
+org.apache.jmeter.report.config.ConfigurationException: The file /Users/romanek/Documents/repo/Saucedemo-playwright/playwright-tests/perf/saucedemo-get-test.jmx doesn't exist or can't be opened
+	at org.apache.jmeter.JMeter.runNonGui(JMeter.java:950) ~[ApacheJMeter_core.jar:5.6.3]
+	at org.apache.jmeter.JMeter.startNonGui(JMeter.java:940) ~[ApacheJMeter_core.jar:5.6.3]
+	at org.apache.jmeter.JMeter.start(JMeter.java:508) [ApacheJMeter_core.jar:5.6.3]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.apache.jmeter.NewDriver.main(NewDriver.java:259) [ApacheJMeter.jar:5.6.3]

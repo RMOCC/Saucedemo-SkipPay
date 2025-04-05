@@ -25,7 +25,7 @@ jobs:
           key: playwright-browsers-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: Install dependencies
-        run: cd playwright-tests && npm ci
+        run: cd playwright-tests && npm install
 
       - name: Install Chromium only
         run: cd playwright-tests && npx playwright install chromium
@@ -42,3 +42,10 @@ jobs:
         with:
           name: playwright-html-report
           path: playwright-tests/playwright-report
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-screenshots
+          path: playwright-tests/test-results/**/*.png
