@@ -3,6 +3,12 @@ import { LoginPage } from '../pages/LoginPage';
 import { ProductPage } from '../pages/ProductPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 import { Menu } from '../pages/Menu';
+import * as dotenv from 'dotenv';
+dotenv.config();
+import { generateTestUser } from '../utils/testData';
+    const testUser = generateTestUser();
+
+
 
 test('Saucedemo E2E flow (POM)', async ({ page }) => {
   const loginPage = new LoginPage(page);

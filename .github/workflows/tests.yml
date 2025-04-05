@@ -8,18 +8,26 @@ on:
 jobs:
   playwright:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - name: Install dependencies
-        run: cd playwright-tests && npm install
+      - name: Cache Playwright browsers
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-browsers-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
-      - name: Install only Chromium browser
+      - name: Install dependencies
+        run: cd playwright-tests && npm ci
+
+      - name: Install Chromium only
         run: cd playwright-tests && npx playwright install chromium
 
       - name: Run Playwright tests
@@ -27,3 +35,10 @@ jobs:
         env:
           SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
           SAUCE_PASSWORD: ${{ secrets.SAUCE_PASSWORD }}
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-html-report
+          path: playwright-tests/playwright-report
